@@ -6,14 +6,16 @@ import data from './data.json';
 
 export default function App() {
   let tip = data.tip;
-
+  let todayWeather = 10 + 17;
+  let todayCondition = "흐림"
   //return 구문 밖에서는 슬래시 두개 방식으로 주석
   return (
     /*
       return 구문 안에서는 {슬래시 + * 방식으로 주석
     */
     <ScrollView style={styles.container}>
-
+      <Text style={styles.title}>나만의 꿀팁</Text>
+      <Text style={styles.weather}>오늘의 날씨: {todayWeather + '°C ' + todayCondition} </Text>
       <Image style={styles.mainImage} source={{uri:main}}/>
       <ScrollView style={styles.middleContainer} horizontal indicatorStyle={"white"}>
         <TouchableOpacity style={styles.middleButton01}><Text style={styles.middleButtonText}>생활</Text></TouchableOpacity>
