@@ -21,14 +21,14 @@ export default function MainPage({navigation,route}) {
   const [ready,setReady] = useState(true)
 
   useEffect(()=>{
-	   
+    navigation.setOptions({
+      title:'나만의 꿀팁'
+    })  
 		//뒤의 1000 숫자는 1초를 뜻함
     //1초 뒤에 실행되는 코드들이 담겨 있는 함수
     setTimeout(()=>{
         //헤더의 타이틀 변경
-        navigation.setOptions({
-          title:'나만의 꿀팁'
-      })  
+        
         setState(data.tip)
         setCateState(data.tip)
         setReady(false)
@@ -62,13 +62,16 @@ export default function MainPage({navigation,route}) {
       <StatusBar style="light" />
       {/* <Text style={styles.title}>나만의 꿀팁</Text> */}
 			 <Text style={styles.weather}>오늘의 날씨: {todayWeather + '°C ' + todayCondition} </Text>
+       <TouchableOpacity style={styles.aboutButton} onPress={()=>{navigation.navigate('AboutPage')}}>
+          <Text style={styles.aboutButtonText}>소개 페이지</Text>
+        </TouchableOpacity>
       <Image style={styles.mainImage} source={{uri:main}}/>
       <ScrollView style={styles.middleContainer} horizontal indicatorStyle={"white"}>
       <TouchableOpacity style={styles.middleButtonAll} onPress={()=>{category('전체보기')}}><Text style={styles.middleButtonTextAll}>전체보기</Text></TouchableOpacity>
         <TouchableOpacity style={styles.middleButton01} onPress={()=>{category('생활')}}><Text style={styles.middleButtonText}>생활</Text></TouchableOpacity>
         <TouchableOpacity style={styles.middleButton02} onPress={()=>{category('재테크')}}><Text style={styles.middleButtonText}>재테크</Text></TouchableOpacity>
         <TouchableOpacity style={styles.middleButton03} onPress={()=>{category('반려견')}}><Text style={styles.middleButtonText}>반려견</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.middleButton04} onPress={()=>{category('꿀팁 찜')}}><Text style={styles.middleButtonText}>꿀팁 찜</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.middleButton04} onPress={()=>{category('꿀팁찜')}}><Text style={styles.middleButtonText}>꿀팁 찜</Text></TouchableOpacity>
       </ScrollView>
       <View style={styles.cardContainer}>
          {/* 하나의 카드 영역을 나타내는 View */}
@@ -177,6 +180,20 @@ weather:{
     marginTop:10,
     marginLeft:10
   },
+  aboutButton: {
+    backgroundColor:"pink",
+    width:100,
+    height:40,
+    borderRadius:10,
+    alignSelf:"flex-end",
+    marginRight:20,
+    marginTop:10
+  },
+  aboutButtonText: {
+    color:"#fff",
+    textAlign:"center",
+    marginTop:10
+  }
 
 
 });
