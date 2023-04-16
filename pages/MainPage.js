@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView} from 'reac
 
 const main = 'https://storage.googleapis.com/sparta-image.appspot.com/lecture/main.png'
 import data from '../data.json';
-
+import Card from '../components/Card';
 export default function MainPage() {
   let tip = data.tip;
   let todayWeather = 10 + 17;
@@ -27,14 +27,15 @@ export default function MainPage() {
         {/* 하나의 카드 영역을 나타내는 View */}
         { 
           tip.map((content,i)=>{
-            return (<View style={styles.card} key={i}>
-              <Image style={styles.cardImage} source={{uri:content.image}}/>
-              <View style={styles.cardText}>
-                <Text style={styles.cardTitle} numberOfLines={1}>{content.title}</Text>
-                <Text style={styles.cardDesc} numberOfLines={3}>{content.desc}</Text>
-                <Text style={styles.cardDate}>{content.date}</Text>
-              </View>
-            </View>)
+            // return (<View style={styles.card} key={i}>
+            //   <Image style={styles.cardImage} source={{uri:content.image}}/>
+            //   <View style={styles.cardText}>
+            //     <Text style={styles.cardTitle} numberOfLines={1}>{content.title}</Text>
+            //     <Text style={styles.cardDesc} numberOfLines={3}>{content.desc}</Text>
+            //     <Text style={styles.cardDate}>{content.date}</Text>
+            //   </View>
+            // </View>)
+            return (<Card content={content} key={i}/>)
           })
          }
         
