@@ -10,7 +10,33 @@ export default function LikeCard({content,navigation,tip, setTip}){
         navigation.navigate('DetailPage',{idx:content.idx})
     }
 
- 
+    const remove = async (cidx) => {
+      let userUniqueId;
+      if(isIOS){
+      let iosId = await Application.getIosIdForVendorAsync();
+          userUniqueId = iosId
+      }else{
+          userUniqueId = await Application.androidId
+      }
+
+      console.log(userUniqueId)
+      firebase_db.ref('/like/'+userUniqueId+'/'+cidx).remove().then(function(){
+        Alert.alert("삭제 완료");
+        //내가 찝 해제 버튼을 누른 카드 idx를 가지고
+        //찝페이지의 찜데이터를 조회해서
+        //찜해제를 원하는 카드를 제외한 새로운 찜 데이터(리스트 형태!)를 만든다
+        let result = tip.filter((data,i)=>{
+          return data.idx !== cidx
+        })
+        //이렇게 만들었으면!
+        //LikePage로 부터 넘겨 받은 tip(찜 상태 데이터)를
+        //filter 함수로 새롭게 만든 찜 데이터를 구성한다!
+        console.log(result)
+        setTip(result)
+
+      })
+      
+    }
 
     return(
         //카드 자체가 버튼역할로써 누르게되면 상세페이지로 넘어가게끔 TouchableOpacity를 사용
