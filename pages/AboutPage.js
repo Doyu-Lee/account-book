@@ -18,15 +18,15 @@ export default function AboutPage({navigation,route}){
     return (
         <View style={styles.container}>
              <StatusBar style="light" />
-            <Text style={styles.title}>HI! 스파르타코딩 앱개발 반에 오신것을 환영합니다</Text>
+            <Text style={styles.title}>NEVERLAND에 오신 여러분, 환영합니다!</Text>
         
             
             <View style={styles.textContainer}>
                 <Image style={styles.aboutImage} source={{uri:aboutImage}} resizeMode={"cover"}/>
-                <Text style={styles.desc01}>많은 내용을 간결하게 담아내려 노력했습니다!</Text>
-                <Text style={styles.desc02}>꼭 완주 하셔서 꼭 여러분것으로 만들어가시길 바랍니다</Text>
+                <Text style={styles.desc01}>티끌모아</Text>
+                <Text style={styles.desc02}>티끌! .. 아니, 태산!</Text>
                 <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText}>여러분의 인스타계정</Text>
+                    <Text style={styles.buttonText}> NEVERLAND 인스타계정</Text>
                 </TouchableOpacity>
             </View>
         </View>)
